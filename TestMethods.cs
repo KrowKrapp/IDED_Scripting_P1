@@ -55,19 +55,11 @@ namespace TestProject1
 
         internal static Queue<uint> CreateQueueFromStack(Stack<uint> stack)
         {
-            Stack<uint> temp = new Stack<uint>();
             Queue<uint> queue = new Queue<uint>();
 
-            while (stack.Count > 0)
+            foreach (var item in stack)
             {
-                temp.Push(stack.Pop());
-            }
-
-            while (temp.Count > 0)
-            {
-                uint val = temp.Pop();
-                stack.Push(val); 
-                queue.Enqueue(val);
+                queue.Enqueue(item);
             }
 
             return queue;
@@ -75,24 +67,16 @@ namespace TestProject1
 
         internal static List<uint> StackToList(Stack<uint> stack)
         {
-            Stack<uint> temp = new Stack<uint>();
             List<uint> list = new List<uint>();
 
-            while (stack.Count > 0)
+            // Iterate over the stack and add each item to the list
+            foreach (var item in stack)
             {
-                temp.Push(stack.Pop());
-            }
-
-            while (temp.Count > 0)
-            {
-                uint val = temp.Pop();
-                list.Add(val);
-                stack.Push(val); 
+                list.Add(item);
             }
 
             return list;
         }
-
 
         internal static bool FoundElementAfterSorted(List<int> list, int value)
         {
